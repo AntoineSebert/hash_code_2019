@@ -16,7 +16,7 @@ class photo:
 		self.tags = _tags
 
 	def print(self):
-		print(self, self.id, self.orientation, self.tags, self.used)
+		print(self, '{ id =', self.id, ', o =', self.orientation, ', tags =', self.tags, ', used =', self.used, '}')
 
 photo_list = List[photo]
 
@@ -31,14 +31,15 @@ class slide:
 		self.orientation = _orientation
 		self.data = _data
 		for photo in _data:
-			self.tags += photo.tags
+			for tag in photo.tags:
+				self.tags.add(tag)
 
 	def print(self):
 		print(self, self.data, self.orientation, self.tags)
 
 	def to_string(self) -> str:
-		if len(data) == 1:
-			return data[0].id
-		return data[0].id + data[1].id
+		if len(self.data) == 1:
+			return str(self.data[0].id)
+		return str(self.data[0].id) + str(self.data[1].id)
 
 slideshow = List[slide]

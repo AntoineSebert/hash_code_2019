@@ -10,7 +10,7 @@ def parse(filename: str) -> List[photo]:
 	def parse_line(line: str, index: int) -> photo:
 		photo_attributes = line[:-1].split(' ')
 
-		return photo(index, photo_attributes[1], photo_attributes[2:])
+		return photo(index, photo_attributes[0], photo_attributes[2:])
 
 	file.readline()
 	_photo_list.append(parse_line(file.readline(), 0))
@@ -32,20 +32,18 @@ def output(slideshow, filename):
 
 	file.write(str(len(slideshow)) + "\n")
 	for slide in slideshow:
-		string = str()
-		if slide.orientation == 'H':
-			string += slide.id + "\n"
-		else:
-			string += str(slide.data[0].id) + " " + str(slide.data[0].id) + "\n"
-		"""
-		for photo in slide:
-			string += photo.id
-		"""
-		file.write(string)
+		file.write(slide.to_string())
 	file.close()
 
 def convert(photos: photo_list) -> slideshow:
-	return {}
+	_slideshow = list()
+	dummy_tags = set()
+	dummy_tags.add("test")
+	dummy_photo = photo(0, 'H', dummy_tags)
+	dummy_list = list()
+	dummy_list.append(dummy_photo)
+	_slideshow.append(slide('H', dummy_list))
+	return _slideshow
 
 def main():
 	photos = parse("a_example.txt")
