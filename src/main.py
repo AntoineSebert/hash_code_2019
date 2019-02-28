@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
 class slide:
-	data = {}
-	orientation = {}
-	tags = list()
+	data = {} # one or two photos
+	orientation = {} # 'H' or 'V'
+	tags = set() # set of strings
 	def __init__(_orientation, _data) -> bool:
-		"""
-		if (self.orientation == 'V' and len(self.data) != 2)
-		or (self.orientation == 'H' and len(self.data) != 1):
+		if (_orientation == 'V' and len(_data) != 2) or (_orientation == 'H' and len(_data) != 1):
 			return False
-		"""
 		self.orientation = _orientation
 		self.data = _data
 
