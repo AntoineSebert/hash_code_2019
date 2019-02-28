@@ -41,15 +41,18 @@ def parse(filename: str) -> photos_list:
 	datasets_folder = "../datasets/"
 	file = open(datasets_folder + filename)
 
-	def parse_line(line: str) -> photo:
-		print(line[:-1].split(' '))
-		return {}
+	def parse_line(line: str, index: int) -> photo:
+		photo_attributes = line[:-1].split(' ')
+
+		return photo(index, photo_attributes[1], photo_attributes[2:])
 
 	file.readline()
-	_photos_list = photos_list(parse_line(file.readline()))
+	_photos_list = photos_list(parse_line(file.readline(), 0))
+	photos_number = 1
 
 	for line in file:
-		parse_line(line)
+		parse_line(line, photos_number)
+		photos_number += 1
 
 	return _photos_list
 
@@ -65,7 +68,6 @@ def output(file):
 	file.close()
 
 def main():
-	"""Script entry point"""
 	photos = parse("a_example.txt")
 
 if __name__ == "__main__":
