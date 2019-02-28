@@ -36,4 +36,9 @@ class slide:
 	def print(self):
 		print(self, self.data, self.orientation, self.tags)
 
+	def to_string(self) -> str:
+		if len(data) == 1:
+			return data[0].id
+		return data[0].id + data[1].id
+
 slideshow = List[slide]
