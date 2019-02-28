@@ -3,8 +3,7 @@
 from classes import *
 
 def parse(filename: str) -> List[photo]:
-	datasets_folder = "../datasets/"
-	file = open(datasets_folder + filename)
+	file = open(filename)
 	_photo_list = list()
 
 	def parse_line(line: str, index: int) -> photo:
