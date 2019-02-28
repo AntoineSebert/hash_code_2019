@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+"""
+CLASSES
+"""
+
 from enum import Enum
 
 class orientation(Enum):
@@ -19,6 +23,7 @@ class photo:
 
 class photos_list:
 	data = list()
+
 	def __init__(self, first_photo: photo):
 		self.data.append(first_photo)
 
@@ -26,29 +31,40 @@ class slide:
 	data = {} # one or two photos
 	orientation = {}
 	tags = set() # set of strings
+
 	def __init__(self, _orientation: orientation, _data) -> bool:
-		if (_orientation == V and len(_data) != 2) or (_orientation == H and len(_data) != 1):
+		if (_orientation == 'V' and len(_data) != 2) or (_orientation == 'H' and len(_data) != 1):
 			return False
 		self.orientation = _orientation
 		self.data = _data
 
 class slideshow:
 	data = list() # list of slides
+
 	def __init__(self, first_slide: slide):
 		self.data.append(first_slide)
-	def output(file):
-	    if(os.path.isfile('./'+filename)):
-	        file = open(filename, "w")
-	    else:
-	        file = open(filename, "x")
 
-	    file.write(len(data))
-	    for line in data:
-	        string = str()
-	        for photo in data.data:
-	            string += photo.id
-	        file.write(String)
-	    file.close()
+	def output(self, filename):
+		import os
+
+		if(os.path.isfile('./'+filename)):
+			file = open(filename, "w")
+		else:
+			file = open(filename, "x")
+
+		file.write(str(len(self.data)) + "\n")
+		for slide in self.data:
+			string = str()
+			if slide.orientation == 'H':
+				string += slide.id + "\n"
+			else:
+				string += str(slide.data[0].id) + " " + str(slide.data[0].id) + "\n"
+			"""
+			for photo in slide:
+				string += photo.id
+			"""
+			file.write(string)
+		file.close()
 
 def parse(filename: str) -> photos_list:
 	datasets_folder = "../datasets/"
@@ -69,19 +85,11 @@ def parse(filename: str) -> photos_list:
 
 	return _photos_list
 
-def output(file):
-	if(os.path.isfile('./'+filename)):
-		file = open(filename, "w")
-	else:
-		file = open(filename, "x")
-
-	file.write(len(data))
-	for line in data:
-		file.write(line)
-	file.close()
-
 def main():
 	photos = parse("a_example.txt")
+	_ = slideshow(slide(photos.data[0].orientation, photos.data[0]))
+	_.data.append(photos)
+	_.output("test2.txt")
 
 if __name__ == "__main__":
 	main()
