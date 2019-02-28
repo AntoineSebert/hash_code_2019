@@ -2,7 +2,7 @@
 
 from classes import *
 
-def parse(filename: str) -> list:
+def parse(filename: str) -> List[photo]:
 	datasets_folder = "../datasets/"
 	file = open(datasets_folder + filename)
 	_photo_list = list()
@@ -17,7 +17,7 @@ def parse(filename: str) -> list:
 	photos_number = 1
 
 	for line in file:
-		parse_line(line, photos_number)
+		_photo_list.append(parse_line(line, photos_number))
 		photos_number += 1
 
 	return _photo_list
@@ -49,6 +49,9 @@ def convert(photos: photo_list) -> slideshow:
 
 def main():
 	photos = parse("a_example.txt")
+	for photo in photos:
+		photo.print()
+
 	slideshow = convert(photos)
 	output(slideshow, "test.txt")
 

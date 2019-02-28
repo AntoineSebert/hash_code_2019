@@ -12,9 +12,10 @@ class photo:
 		self.id = _id;
 		self.orientation = _orientation
 		self.tags = _tags
+		self.print()
 
 	def print(self):
-		print(id, orientation, tags, used)
+		print(self, self.id, self.orientation, self.tags, self.used)
 
 photo_list = List[photo]
 
@@ -32,6 +33,6 @@ class slide:
 			self.tags += photo.tags
 
 	def print(self):
-		print(data, orientation, tags)
+		print(self.data, self.orientation, self.tags)
 
 slideshow = List[slide]
