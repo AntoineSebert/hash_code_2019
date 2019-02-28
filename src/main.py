@@ -53,24 +53,20 @@ def parse(filename: str) -> photos_list:
 
 	return _photos_list
 
-	def output(file):
-		if(os.path.isfile('./'+filename)):
-        	file = open(filename, "w")
-		else:
-	        file = open(filename, "x")
+def output(file):
+	if(os.path.isfile('./'+filename)):
+		file = open(filename, "w")
+	else:
+		file = open(filename, "x")
 
-		file.write(len(data))
-	    for line in data:
-            file.write(line)
-    	file.close()
-
-
+	file.write(len(data))
+	for line in data:
+		file.write(line)
+	file.close()
 
 def main():
 	"""Script entry point"""
 	photos = parse("a_example.txt")
-
-
 
 if __name__ == "__main__":
 	main()
