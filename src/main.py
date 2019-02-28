@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from enum import Enum
+
+class orientation(Enum):
+	H = 'H'
+	V = 'V'
+
 class slide:
 	data = {} # one or two photos
 	orientation = {} # 'H' or 'V'
@@ -15,8 +21,17 @@ class slideshow:
 	def __init__(first_slide: slide):
 		data.append(photo)
 
+def parse(filename: str) -> slideshow:
+	datasets_folder = "../datasets/"
+	file = open(datasets_folder + filename)
+	file.readline()
+	for line in file:
+		print(line[:-1])
+
+
 def main():
 	"""Script entry point"""
+	parse("a_example.txt")
 
 if __name__ == "__main__":
 	main()
