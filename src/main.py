@@ -24,6 +24,7 @@ class slideshow:
 		else:
 	        file = open(filename, "x")
 
+		file.write(len(data))
 	    for line in data:
             file.write(line)
     	file.close()

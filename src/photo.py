@@ -1,7 +1,7 @@
 class photo:
     id = 0
-    orientation = 'H'
-    tags = []
+    orientation = char()
+    tags = set()
     used = False
 
     def __init__(self, pos, orien, tag):
