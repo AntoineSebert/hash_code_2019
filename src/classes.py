@@ -2,7 +2,6 @@
 
 from typing import List, Set
 
-""" PHOTO =========================================================================================================="""
 class photo:
 	id = int()
 	orientation = str()
@@ -14,10 +13,11 @@ class photo:
 		self.orientation = _orientation
 		self.tags = _tags
 
-""" PHOTO LIST ====================================================================================================="""
+	def print(self):
+		print(id, orientation, tags, used)
+
 photo_list = List[photo]
 
-""" SLIDE =========================================================================================================="""
 class slide:
 	data = list() # one or two photos
 	orientation = str()
@@ -28,6 +28,10 @@ class slide:
 			return False
 		self.orientation = _orientation
 		self.data = _data
+		for photo in _data:
+			self.tags += photo.tags
 
-""" SLIDESHOW ======================================================================================================"""
+	def print(self):
+		print(data, orientation, tags)
+
 slideshow = List[slide]

@@ -2,10 +2,10 @@
 
 from classes import *
 
-""" PARSE =========================================================================================================="""
 def parse(filename: str) -> list:
 	datasets_folder = "../datasets/"
 	file = open(datasets_folder + filename)
+	_photo_list = list()
 
 	def parse_line(line: str, index: int) -> photo:
 		photo_attributes = line[:-1].split(' ')
@@ -13,7 +13,7 @@ def parse(filename: str) -> list:
 		return photo(index, photo_attributes[1], photo_attributes[2:])
 
 	file.readline()
-	_photo_list = photo_list(parse_line(file.readline(), 0))
+	_photo_list.append(parse_line(file.readline(), 0))
 	photos_number = 1
 
 	for line in file:
@@ -22,17 +22,16 @@ def parse(filename: str) -> list:
 
 	return _photo_list
 
-""" OUTPUT ========================================================================================================="""
-def output(self, filename):
+def output(slideshow, filename):
 	import os
 
-	if(os.path.isfile('./'+filename)):
+	if(os.path.isfile('./' + filename)):
 		file = open(filename, "w")
 	else:
 		file = open(filename, "x")
 
-	file.write(str(len(self.data)) + "\n")
-	for slide in self.data:
+	file.write(str(len(slideshow)) + "\n")
+	for slide in slideshow:
 		string = str()
 		if slide.orientation == 'H':
 			string += slide.id + "\n"
@@ -45,13 +44,9 @@ def output(self, filename):
 		file.write(string)
 	file.close()
 
-
-""" CONVERT ========================================================================================================"""
 def convert(photos: photo_list) -> slideshow:
 	return {}
 
-
-""" ENTRY POINT ===================================================================================================="""
 def main():
 	photos = parse("a_example.txt")
 	slideshow = convert(photos)
