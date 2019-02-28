@@ -3,7 +3,7 @@
 from classes import *
 
 def parse(filename: str) -> List[photo]:
-	file = open(filename)
+	file = open("C://Users//calte//OneDrive//Documents//hash_code_2019//src//"+filename)
 	_photo_list = list()
 
 	def parse_line(line: str, index: int) -> photo:
