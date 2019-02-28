@@ -36,6 +36,19 @@ class slideshow:
 	data = list() # list of slides
 	def __init__(self, first_slide: slide):
 		self.data.append(first_slide)
+	def output(file):
+	    if(os.path.isfile('./'+filename)):
+	        file = open(filename, "w")
+	    else:
+	        file = open(filename, "x")
+
+	    file.write(len(data))
+	    for line in data:
+	        string = str()
+	        for photo in data.data:
+	            string += photo.id
+	        file.write(String)
+	    file.close()
 
 def parse(filename: str) -> photos_list:
 	datasets_folder = "../datasets/"
