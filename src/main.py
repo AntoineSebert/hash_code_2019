@@ -53,6 +53,9 @@ def main():
 		photo.print()
 
 	slideshow = convert(photos)
+	for slide in slideshow:
+		slide.print()
+
 	output(slideshow, "test.txt")
 
 if __name__ == "__main__":

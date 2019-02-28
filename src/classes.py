@@ -2,17 +2,18 @@
 
 from typing import List, Set
 
+tag_set = Set[str]
+
 class photo:
 	id = int()
 	orientation = str()
 	tags = set()
 	used = bool()
 
-	def __init__(self, _id: int, _orientation: str, _tags: list):
+	def __init__(self, _id: int, _orientation: str, _tags: Set[str]):
 		self.id = _id;
 		self.orientation = _orientation
 		self.tags = _tags
-		self.print()
 
 	def print(self):
 		print(self, self.id, self.orientation, self.tags, self.used)
@@ -33,6 +34,6 @@ class slide:
 			self.tags += photo.tags
 
 	def print(self):
-		print(self.data, self.orientation, self.tags)
+		print(self, self.data, self.orientation, self.tags)
 
 slideshow = List[slide]
