@@ -18,8 +18,22 @@ class slideshow:
 	def __init__(first_slide: slide):
 		data.append(photo)
 
+	def output(file):
+		if(os.path.isfile('./'+filename)):
+        	file = open(filename, "w")
+		else:
+	        file = open(filename, "x")
+
+	    for line in data:
+            file.write(line)
+    	file.close()
+
+
+
 def main():
 	"""Script entry point"""
+
+
 
 if __name__ == "__main__":
 	main()
