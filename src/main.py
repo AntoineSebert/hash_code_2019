@@ -3,6 +3,7 @@
 class slide:
 	data = {}
 	orientation = {}
+	tags = list()
 	def __init__(_orientation, _data) -> bool:
 		"""
 		if (self.orientation == 'V' and len(self.data) != 2)
