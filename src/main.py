@@ -37,12 +37,23 @@ def output(slideshow, filename):
 
 def convert(photos: photo_list) -> slideshow:
 	_slideshow = list()
-	dummy_tags = set()
-	dummy_tags.add("test")
-	dummy_photo = photo(0, 'H', dummy_tags)
-	dummy_list = list()
-	dummy_list.append(dummy_photo)
-	_slideshow.append(slide('H', dummy_list))
+	for photo in photos:
+		photo.print()
+		if photo.orientation == 'H':
+			data = list()
+			data.append(photo)
+			slideshow.append(slide('H', data))
+			photo_list.pop(0)
+		else:
+			data = list()
+			data.append(photo)
+			photo_list.pop(0)
+			for photo in photo_list:
+				if photo.orientation == 'V':
+					data.append(photo)
+					photo_list.remove(photo)
+			if len(data) == 2:
+				slideshow.append(slide('V', data))
 	return _slideshow
 
 def main():
